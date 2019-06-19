@@ -1,0 +1,45 @@
+[submodule "vim/default/plugins/start/vim-sensible"]
+	path = vim/pack/default/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/default/plugins/start/vim-surround"]
+	path = vim/pack/default/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/default/plugins/start/vim-commentary"]
+	path = vim/pack/default/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/default/plugins/start/vim-endwise"]
+	path = vim/pack/default/start/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "vim/default/plugins/start/vim-fugitive"]
+	path = vim/pack/default/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/default/plugins/start/vim-repeat"]
+	path = vim/pack/default/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/default/plugins/start/vim-ragtag"]
+	path = vim/pack/default/start/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag.git
+[submodule "vim/default/plugins/start/vim-ruby"]
+	path = vim/pack/default/start/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "vim/default/plugins/start/vim-rails"]
+	path = vim/pack/default/start/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/default/plugins/start/fzf"]
+	path = vim/pack/default/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "vim/default/plugins/start/fzf.vim"]
+	path = vim/pack/default/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/default/plugins/start/ale"]
+	path = vim/pack/default/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "vim/default/plugins/start/rainbox_parentheses"]
+	path = vim/pack/default/start/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim
+[submodule "vim/default/plugins/start/vim-gitgutter"]
+	path = vim/pack/default/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/pack/default/start/gruvbox"]
+	path = vim/pack/default/start/gruvbox
+	url = https://github.com/gruvbox-community/gruvbox.git
