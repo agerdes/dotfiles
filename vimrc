@@ -1,6 +1,5 @@
 set nocompatible  " be iMproved
 set modelines=0   " prevent modelines exploits
-set nomodeline
 
 
 " Old settings, now covered by tpope/vim-sensible
