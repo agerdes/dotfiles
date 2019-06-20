@@ -1,0 +1,152 @@
+{
+  /************
+
+  Layout
+
+  ************/
+
+  "window.zoomLevel": 0,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Fira Code, monospace",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  // Hide Overview Rulers
+  "editor.overviewRulerBorder": false,
+  "editor.overviewRulerLanes": 1,
+  "editor.hideCursorInOverviewRuler": false,
+  "editor.renderLineHighlight": "all",
+  "editor.renderIndentGuides": false,
+  "editor.rulers": [80],
+  "explorer.confirmDragAndDrop": false,
+
+  // Hides Activity Bar (left-hand icons for Explore, SCM, etc)
+  "workbench.activityBar.visible": false,
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#aaaaaa22",
+    "editorRuler.foreground": "#aaaaaa22",
+  },
+  "workbench.editor.showTabs": false,
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.feedback.visible": false,
+
+
+  /************
+
+  Tabs & Whitespace
+
+  ************/
+
+  "editor.scrollBeyondLastLine": false,
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+
+  /************
+
+  Cursor
+
+  ************/
+
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "phase",
+
+
+  /************
+
+  Diff
+
+  ************/
+
+  "diffEditor.renderSideBySide": false,
+
+
+  /************
+
+  Vim
+
+  ************/
+
+  // System Integration
+  "vim.useSystemClipboard": true,
+
+  // Set leader to space
+  "vim.leader": "<space>",
+
+  // Don't persist search highlight
+  "vim.hlsearch": false,
+
+  // Block cursor in insert mode
+  // All others show underline as cursor
+  "vim.cursorStylePerMode.normal": "underline",
+  "vim.cursorStylePerMode.visual": "underline",
+  "vim.cursorStylePerMode.visualblock": "underline",
+  "vim.cursorStylePerMode.visualline": "underline",
+  "vim.cursorStylePerMode.replace": "underline",
+
+  "vim.insertModeKeyBindings": [
+    { "before": ["<C-l>"], "after": ["<Esc>"] }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [{
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.navigateEditorGroups"]
+    },
+  ],
+
+
+
+  /************
+
+  Integrated Terminal Settings
+
+  ************/
+
+  "terminal.integrated.confirmOnExit": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 5000,
+
+
+  /************
+
+  Linting
+
+  ************/
+
+  "editor.formatOnPaste": true,
+  "prettier.tslintIntegration": true,
+
+
+  /************
+
+  File-type Specific Settings
+
+  ************/
+
+  "[git-commit]": {
+    "editor.rulers": [50,72],
+    "editor.wordWrapColumn": 72,
+    "editor.wordWrap": "on",
+  },
+  "[git-rebase]": {
+    "editor.rulers": [50,72],
+    "editor.wordWrapColumn": 72,
+    "editor.wordWrap": "on",
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+
+  /************
+
+  Search
+
+  ************/
+
+  "search.exclude": {
+    "dist/": true
+  },
+  "search.location": "panel",
+  "liveshare.featureSet": "insiders",
+  "workbench.colorTheme": "Default Light+",
+}
