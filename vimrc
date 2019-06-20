@@ -1,12 +1,8 @@
-set nocompatible  " be iMproved
-set modelines=0   " prevent modelines exploits
-
-
-" Old settings, now covered by tpope/vim-sensible
-" https://gist.github.com/agerdes/fd9d689275078232033282611296c203
+set nocompatible       " be iMproved
+set modelines=0        " prevent modelines exploits
 set nowrap             " Make long lines inconvenient
 set nobackup           " Don't use ancient backup files
-set noswapfile         " .. or swap files"
+set noswapfile         " .. or swap files
 set ttyfast            " Redraw faster
 set hidden             " Keep hidden buffers loaded
 set clipboard=unnamed  " Share clipboard with OS X
@@ -41,6 +37,8 @@ set listchars=tab:\ \      " A tab displays as "  ", trailing whitespace as "."
 set listchars+=trail:.     " Show trailing spaces as dots
 set listchars+=extends:>   " Last character on line that runs off screen
 set listchars+=precedes:<  " First character when scrolled to the right
+vnoremap < <gv             " Keep selection when fixing indentation
+vnoremap > >gv
 
 
 " Display
@@ -65,11 +63,6 @@ augroup CursorLine
 augroup END
 
 
-" KEEP SELECTED TEXT SELECTED WHEN FIXING INDENTATION
-vnoremap < <gv
-vnoremap > >gv
-
-
 " Keybindings
 let mapleader="\<Space>"
 inoremap <C-l> <Esc>
@@ -87,7 +80,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 
-" Statusline
+" Status Line
 function! GitStatus()
   let output = ''
   if !empty(fugitive#head())
