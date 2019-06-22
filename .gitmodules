@@ -43,3 +43,9 @@
 [submodule "vim/pack/default/start/gruvbox"]
 	path = vim/pack/default/start/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox.git
+[submodule "zsh/prompt/pure"]
+	path = zsh/prompt/pure
+	url = https://github.com/sindresorhus/pure
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
