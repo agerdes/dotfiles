@@ -15,6 +15,7 @@ brew "redis"
 brew "node"
 brew "nvm"
 brew "yarn"
+brew "ddgr"
 
 
 # Install cask apps
