@@ -1,0 +1,54 @@
+#!/usr/bin/env zsh
+export DOTFILES_DIR=$HOME/dotfiles
+
+
+mumble() {
+  printf "\\n$1\\n" "$@"
+}
+
+
+# Ask for the administrator password upfront
+sudo -v
+
+
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+# Install Homebrew
+if ! command -v brew >/dev/null; then
+  mumble "Installing Homebrew ..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  mumble "Homebrew already exists"
+fi
+
+
+# Install Homebrew bundle
+if brew bundle check --file=/Users/agerdes/dotfiles/brew/Brewfile >/dev/null; then
+  mumble "Homebrew bundle is up to date."
+else
+  mumble "Homebrew bundle is out of date, updating.."
+  brew update
+  brew doctor
+  brew bundle --file=$DOTFILES_DIR/brew/Brewfile
+fi
+
+
+# Find or clone dotfiles
+if [[ -a $DOTFILES_DIR ]]; then
+  mumble "Dotfiles exist, using $DOTFILES_DIR/zsh/zshrc"
+else
+  # TODO: Update to current, test that this works
+  mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
+  git clone ssh://git@github.com/agerdes/dotfiles.git $DOTFILES_DIR
+fi
+source $DOTFILES_DIR/zsh/zshrc
+
+
+# Run each ./*/setup
+setup_files=($DOTFILES_DIR/*/setup)
+for file in $setup_files; do
+  mumble "Running setup script at $file"
+  $file
+done
