@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+ln -sfv $DOTFILES_DIR/vim/vimrc $HOME/.vimrc
+rm -rf $HOME/.vim
+ln -sfv $DOTFILES_DIR/vim $HOME/.vim
