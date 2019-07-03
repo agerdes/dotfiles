@@ -81,5 +81,8 @@ autoload -U promptinit; promptinit
 prompt pure
 
 
+# fish-like auto suggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # fish-like command syntax highlighting - needs to be the last source in the file
 source /Users/agerdes/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

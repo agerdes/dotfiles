@@ -16,7 +16,7 @@ brew "node"
 brew "nvm"
 brew "yarn"
 brew "ddgr"
-
+brew "zsh-autosuggestions"
 
 # Install cask apps
 cask "iterm2"
