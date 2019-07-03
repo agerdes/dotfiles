@@ -149,4 +149,7 @@
   "search.location": "panel",
   "liveshare.featureSet": "insiders",
   "workbench.colorTheme": "Default Light+",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
