@@ -81,6 +81,10 @@ autoload -U promptinit; promptinit
 prompt pure
 
 
+# git completion
+autoload -Uz compinit && compinit
+
+
 # fish-like auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
