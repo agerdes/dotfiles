@@ -105,6 +105,7 @@
   "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.rendererType": "dom",
 
 
   /************
