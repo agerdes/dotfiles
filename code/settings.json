@@ -9,25 +9,27 @@
   "editor.fontSize": 13,
   "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": true,
+
+  // Rulers
+  "editor.renderLineHighlight": "all",
+  "editor.rulers": [80],
+
+  // Hide tabs, minimap, overview, rulers, and activity bar
+  "workbench.editor.showTabs": false,
   "editor.minimap.enabled": false,
-  // Hide Overview Rulers
   "editor.overviewRulerBorder": false,
   "editor.overviewRulerLanes": 1,
-  "editor.hideCursorInOverviewRuler": false,
-  "editor.renderLineHighlight": "all",
   "editor.renderIndentGuides": false,
-  "editor.rulers": [80],
-  "explorer.confirmDragAndDrop": false,
-
-  // Hides Activity Bar (left-hand icons for Explore, SCM, etc)
   "workbench.activityBar.visible": false,
+
+  "explorer.confirmDragAndDrop": false,
+  "editor.scrollBeyondLastLine": false,
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#aaaaaa22",
     "editorRuler.foreground": "#aaaaaa22",
   },
-  "workbench.editor.showTabs": false,
-  "workbench.startupEditor": "none",
-  "workbench.statusBar.feedback.visible": false,
 
 
   /************
@@ -36,7 +38,6 @@
 
   ************/
 
-  "editor.scrollBeyondLastLine": false,
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -49,8 +50,15 @@
 
   ************/
 
-  "editor.cursorStyle": "block",
+  "editor.cursorStyle": "underline-thin",
   "editor.cursorBlinking": "phase",
+  "terminal.integrated.cursorBlinking": true,
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "underline",
+  "vim.cursorStylePerMode.replace": "underline",
+  "vim.cursorStylePerMode.visual": "line",
+  "vim.cursorStylePerMode.visualblock": "line",
+  "vim.cursorStylePerMode.visualline": "line",
 
 
   /************
@@ -68,33 +76,18 @@
 
   ************/
 
-  // System Integration
+  "vim.timeout": 250,
   "vim.useSystemClipboard": true,
-
-  // Set leader to space
   "vim.leader": "<space>",
-
-  // Don't persist search highlight
   "vim.hlsearch": false,
-
-  // Block cursor in insert mode
-  // All others show underline as cursor
-  "vim.cursorStylePerMode.normal": "underline",
-  "vim.cursorStylePerMode.visual": "underline",
-  "vim.cursorStylePerMode.visualblock": "underline",
-  "vim.cursorStylePerMode.visualline": "underline",
-  "vim.cursorStylePerMode.replace": "underline",
-
   "vim.insertModeKeyBindings": [
     { "before": ["<C-l>"], "after": ["<Esc>"] }
   ],
-
   "vim.normalModeKeyBindingsNonRecursive": [{
       "before": ["leader", "w"],
       "commands": ["workbench.action.navigateEditorGroups"]
     },
   ],
-
 
 
   /************
@@ -104,8 +97,8 @@
   ************/
 
   "terminal.integrated.confirmOnExit": true,
-  "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.scrollback": 5000,
+  "terminal.integrated.cursorStyle": "underline",
 
 
   /************
@@ -134,6 +127,9 @@
     "editor.wordWrapColumn": 72,
     "editor.wordWrap": "on",
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "typescript.updateImportsOnFileMove.enabled": "always",
 
 
@@ -143,13 +139,20 @@
 
   ************/
 
-  "search.exclude": {
-    "dist/": true
-  },
+  "search.exclude": { "dist/": true },
   "search.location": "panel",
+
+
+  /************
+
+  Liveshare
+
+  ************/
+
   "liveshare.featureSet": "insiders",
-  "workbench.colorTheme": "Default Light+",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "liveshare.nameTagVisibility": "Always",
+  "liveshare.showReadOnlyUsersInEditor": "always",
+  "liveshare.anonymousGuestApproval": "reject",
+  "liveshare.increasedGuestLimit": false,
+  "liveshare.guestApprovalRequired": true,
 }
