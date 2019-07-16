@@ -9,5 +9,10 @@
     "key": "ctrl+m",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "terminalFocus",
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus",
   }
 ]
