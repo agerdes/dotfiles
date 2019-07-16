@@ -80,16 +80,18 @@
 
   "vim.timeout": 250,
   "vim.useSystemClipboard": true,
-  "vim.leader": "<space>",
   "vim.hlsearch": false,
   "vim.insertModeKeyBindings": [
     { "before": ["<C-l>"], "after": ["<Esc>"] }
   ],
+  "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["leader", "w"],
       "commands": ["workbench.action.navigateEditorGroups"]
     },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
   ],
 
 
