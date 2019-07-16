@@ -3,6 +3,11 @@
   {
     "key": "shift+;",
     "command": "vim.showQuickpickCmdLine",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
+    "when": "editorTextFocus && vim.mode != 'Insert'",
   },
+  {
+    "key": "ctrl+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus",
+  }
 ]
