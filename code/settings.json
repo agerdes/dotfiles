@@ -26,7 +26,7 @@
   "explorer.confirmDragAndDrop": false,
   "editor.scrollBeyondLastLine": false,
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Gruvbox Dark (Hard)",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#aaaaaa22",
     "editorRuler.foreground": "#aaaaaa22",
