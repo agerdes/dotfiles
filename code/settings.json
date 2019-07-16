@@ -43,6 +43,7 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  "rewrap.autoWrap.enabled": true,
 
 
   /************
@@ -121,14 +122,8 @@
   ************/
 
   "[git-commit]": {
-    "editor.rulers": [50,72],
-    "editor.wordWrapColumn": 72,
-    "editor.wordWrap": "on",
-  },
-  "[git-rebase]": {
-    "editor.rulers": [50,72],
-    "editor.wordWrapColumn": 72,
-    "editor.wordWrap": "on",
+    "editor.rulers": [72, 50],
+    "editor.wordWrap": "off",
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
