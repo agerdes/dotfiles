@@ -1,3 +1,8 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+  {
+    "key": "shift+;",
+    "command": "vim.showQuickpickCmdLine",
+    "when": "editorTextFocus && vim.mode != 'Insert'"
+  },
 ]

@@ -15,6 +15,7 @@
   "editor.rulers": [80],
 
   // Hide tabs, minimap, overview, rulers, and activity bar
+  "workbench.statusBar.visible": false,
   "workbench.editor.showTabs": false,
   "editor.minimap.enabled": false,
   "editor.overviewRulerBorder": false,
@@ -83,7 +84,8 @@
   "vim.insertModeKeyBindings": [
     { "before": ["<C-l>"], "after": ["<Esc>"] }
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [{
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
       "before": ["leader", "w"],
       "commands": ["workbench.action.navigateEditorGroups"]
     },
@@ -96,6 +98,7 @@
 
   ************/
 
+  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
   "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.cursorStyle": "underline",
