@@ -49,3 +49,6 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "vim/pack/default/start/vim-gnupg"]
+	path = vim/pack/default/start/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg.git
