@@ -69,7 +69,7 @@ inoremap <C-l> <Esc>
 nnoremap <leader>w <C-W>w           " Rotate between splits
 nnoremap <leader>t :Files<CR>       " Open file with fzf
 nnoremap <leader>b :Buffers<CR>     " Search buffers with fzf
-nnoremap <leader>f :Find<CR>        " Search in project with fzf
+nnoremap <leader>f :Rg<CR>          " Search in project with fzf
 nnoremap <BS> <C-^>                 " Backspace for alternate file
 
 
