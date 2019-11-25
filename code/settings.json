@@ -110,12 +110,20 @@
 
   /************
 
-  Linting
+  Linting & Formatting
 
   ************/
 
   "editor.formatOnPaste": true,
-  "prettier.tslintIntegration": true,
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {
+    "rubocop": {
+      "command": "rubocop",
+      "useBundler": false,
+      "lint": true,
+      "rails": true,
+    }
+  },
 
 
   /************
@@ -129,7 +137,7 @@
     "editor.wordWrap": "off",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
 
@@ -141,7 +149,7 @@
   ************/
 
   "search.exclude": { "dist/": true },
-  "search.location": "panel",
+  "search.location": "sidebar",
 
 
   /************
@@ -156,4 +164,11 @@
   "liveshare.anonymousGuestApproval": "reject",
   "liveshare.increasedGuestLimit": false,
   "liveshare.guestApprovalRequired": true,
+  "rubyTestExplorer.rspecCommand": "docker-compose exec -e RAILS_ENV=test -e RAKE_END=test app bundle exec rspec",
+  "rubyTestExplorer.testFramework": "rspec",
+  "rubyTestExplorer.logpanel": true,
+  "ruby.specClearTerminal": false,
+  "ruby.specCommand": "bin/machina test",
+  "ruby.specFocusTerminal": false,
+  "ruby.specSaveFile": true,
 }
