@@ -1,6 +1,7 @@
 # Install cask apps
 cask "anki"
 cask "arq"
+cask "brave-browser"
 cask "github"
 cask "calibre"
 cask "dash"
