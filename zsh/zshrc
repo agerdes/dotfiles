@@ -15,30 +15,22 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
-
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-
 # Use ripgrep for fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs --smart-case --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
-# Ctrl-P from the command line
-# From https://adamheins.com/blog/ctrl-p-in-the-terminal-with-fzf
-# This is the same functionality as fzf's ctrl-t, except that the file or
-# directory selected is now automatically cd'ed or opened, respectively.
-fzf-open-file-or-dir() {
-  local cmd="command find -L . \
-    \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
-    -o -type f -print \
-    -o -type d -print \
-    -o -type l -print 2> /dev/null | sed 1d | cut -b3-"
-  local out=$(eval $cmd | fzf-tmux --exit-0)
+function launchzilla() {
+  local cmd="command rg --files --smart-case \
+    ~/Notes \
+    ~/Code \
+    ~/Desktop \
+    ~/Documents \
+    ~/Downloads"
+  local out=$(eval $cmd | fzf)
 
   if [ -f "$out" ]; then
     $EDITOR "$out" < /dev/tty
@@ -47,33 +39,53 @@ fzf-open-file-or-dir() {
     zle reset-prompt
   fi
 }
-zle     -N   fzf-open-file-or-dir
-bindkey '^T' fzf-open-file-or-dir
+
+
+function apps() {
+  local search="command find /Applications /System/Applications \
+    /System/Applications/Utilities -iname '*.app' -maxdepth 1"
+  local out=$(eval $search | fzf)
+
+  if [ -f "$out" ]; then
+    $EDITOR "$out" < /dev/tty
+  elif [ -d "$out" ]; then
+    open -a "$out"
+    zle reset-prompt
+  fi
+}
 
 
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
 # vim mode
 bindkey -v
+bindkey -v '^?' backward-delete-char
 # Open command line in vim
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd "^V" edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -r "^l"
+bindkey '^l' vi-cmd-mode
+bindkey -M vicmd "^l" edit-command-line
 
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+# key bindings
+zle -N launchzilla
+bindkey '^F' launchzilla
+zle -N apps
+bindkey '^A' apps
 
 
 # aliases
 ls -G . &>/dev/null && alias ls='ls -G'
-alias zshconfig="vim ~/.zshrc"
-alias zshconfig="vim ~/.zshrc"
-alias journal="vim ~/Notes/Journal/$(date '+%Y-%m-%d').txt"
-alias gratitude="vim ~/Notes/Gratitude/$(date '+%Y-%m-%d').txt"
+alias ap="cat >> $1"
+alias bc="bc -lq"
 alias fort="ssh aaron@45.55.251.140 -p30001"
+alias goo="ddgr -n 3 $1"
+alias gratitude="vim ~/Notes/Gratitude/$(date '+%Y-%m-%d').txt"
+alias in="cat >> ~/Notes/Inbox.txt"
+alias journal="vim ~/Notes/Journal/$(date '+%Y-%m-%d').txt"
+alias pas="pass -c $1 && pass $1 | rg 'login:' | xargs -I{} terminal-notifier -message {} -title 'Password Copied'"
+alias zshconfig="vim ~/.zshrc"
 alias zzz="pmset sleepnow"
-# alias rails = "bundle exec rails $1"
 
 
 # Use pure theme
@@ -81,13 +93,13 @@ fpath=("$HOME/dotfiles/zsh/functions" $fpath)
 autoload -U promptinit; promptinit
 prompt pure
 
-
 # git completion
 autoload -Uz compinit && compinit
-
 
 # fish-like auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fish-like command syntax highlighting - needs to be the last source in the file
 source /Users/agerdes/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
