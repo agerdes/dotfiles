@@ -29,9 +29,8 @@
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#aaaaaa22",
-    "editorRuler.foreground": "#aaaaaa22",
+    "editorRuler.foreground": "#aaaaaa22"
   },
-
 
   /************
 
@@ -44,7 +43,6 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "rewrap.autoWrap.enabled": true,
-
 
   /************
 
@@ -62,7 +60,6 @@
   "vim.cursorStylePerMode.visualblock": "line",
   "vim.cursorStylePerMode.visualline": "line",
 
-
   /************
 
   Diff
@@ -70,7 +67,6 @@
   ************/
 
   "diffEditor.renderSideBySide": false,
-
 
   /************
 
@@ -81,9 +77,7 @@
   "vim.timeout": 250,
   "vim.useSystemClipboard": true,
   "vim.hlsearch": false,
-  "vim.insertModeKeyBindings": [
-    { "before": ["<C-l>"], "after": ["<Esc>"] }
-  ],
+  "vim.insertModeKeyBindings": [{ "before": ["<C-l>"], "after": ["<Esc>"] }],
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -91,9 +85,8 @@
       "commands": ["workbench.action.navigateEditorGroups"]
     },
     { "before": [">"], "commands": ["editor.action.indentLines"] },
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] }
   ],
-
 
   /************
 
@@ -105,8 +98,6 @@
   "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.cursorStyle": "underline",
-  "terminal.integrated.rendererType": "dom",
-
 
   /************
 
@@ -114,6 +105,8 @@
 
   ************/
 
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "ruby.useLanguageServer": true,
   "ruby.lint": {
@@ -121,10 +114,14 @@
       "command": "rubocop",
       "useBundler": false,
       "lint": true,
-      "rails": true,
+      "rails": true
     }
   },
-
+  "eslint.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "tslint.enable": false,
 
   /************
 
@@ -134,13 +131,9 @@
 
   "[git-commit]": {
     "editor.rulers": [72, 50],
-    "editor.wordWrap": "off",
-  },
-  "[typescriptreact]": {
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.wordWrap": "off"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-
 
   /************
 
@@ -148,9 +141,9 @@
 
   ************/
 
-  "search.exclude": { "dist/": true },
-  "search.location": "sidebar",
-
+  "search.exclude": {
+    "dist/": true
+  },
 
   /************
 
@@ -171,4 +164,10 @@
   "ruby.specCommand": "bin/machina test",
   "ruby.specFocusTerminal": false,
   "ruby.specSaveFile": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false,
+  "workbench.sideBar.location": "left",
+  "git.autofetch": true,
+  "liveshare.authenticationProvider": "GitHub",
+  "security.workspace.trust.untrustedFiles": "open"
 }
