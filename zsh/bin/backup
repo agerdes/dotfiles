@@ -1,0 +1,13 @@
+function backup() {
+  local backup_volume=/Volumes/ark/
+  local backup_dir=backup
+  local backup_files=$HOME/.ark.txt
+  mkdir -p $backup_volume/$backup_dir
+  rsync -ravE \
+        --human-readable \
+        --delete \
+        --files-from=$backup_files \
+        $HOME/ \
+        $backup_volume/$backup_dir
+}
+

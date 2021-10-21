@@ -1,0 +1,6 @@
+function apps() {
+  local cmd="find /Applications /System/Applications \
+    /System/Applications/Utilities -name '*.app' -maxdepth 1"
+  open -a "$(eval $cmd | fzf)"
+}
+

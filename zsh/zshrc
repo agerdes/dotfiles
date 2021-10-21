@@ -15,6 +15,12 @@ export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
+fpath=( $HOME/dotfiles/zsh/bin "${fpath[@]}" )
+
+autoload -Uz apps
+autoload -Uz backup
+autoload -Uz launcher
+
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
@@ -22,38 +28,6 @@ source /usr/local/share/chruby/auto.sh
 # Use ripgrep for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs --smart-case --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-function launchzilla() {
-  local cmd="command rg --files --smart-case \
-    ~/Notes \
-    ~/Code \
-    ~/Desktop \
-    ~/Documents \
-    ~/Downloads"
-  local out=$(eval $cmd | fzf)
-
-  if [ -f "$out" ]; then
-    $EDITOR "$out" < /dev/tty
-  elif [ -d "$out" ]; then
-    cd "$out"
-    zle reset-prompt
-  fi
-}
-
-
-function apps() {
-  local search="command find /Applications /System/Applications \
-    /System/Applications/Utilities -iname '*.app' -maxdepth 1"
-  local out=$(eval $search | fzf)
-
-  if [ -f "$out" ]; then
-    $EDITOR "$out" < /dev/tty
-  elif [ -d "$out" ]; then
-    open -a "$out"
-    zle reset-prompt
-  fi
-}
-
 
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
@@ -68,11 +42,10 @@ bindkey '^l' vi-cmd-mode
 bindkey -M vicmd "^l" edit-command-line
 
 # key bindings
-zle -N launchzilla
-bindkey '^F' launchzilla
+zle -N launcher
+bindkey '^F' launcher
 zle -N apps
 bindkey '^A' apps
-
 
 # aliases
 ls -G . &>/dev/null && alias ls='ls -G'
@@ -86,7 +59,6 @@ alias journal="vim ~/Notes/Journal/$(date '+%Y-%m-%d').txt"
 alias pas="pass -c $1 && pass $1 | rg 'login:' | xargs -I{} terminal-notifier -message {} -title 'Password Copied'"
 alias zshconfig="vim ~/.zshrc"
 alias zzz="pmset sleepnow"
-
 
 # Use pure theme
 fpath=("$HOME/dotfiles/zsh/functions" $fpath)
@@ -102,4 +74,3 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # fish-like command syntax highlighting - needs to be the last source in the file
 source /Users/agerdes/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

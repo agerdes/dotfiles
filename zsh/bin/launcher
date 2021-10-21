@@ -1,0 +1,16 @@
+function launcher() {
+  local cmd="command rg --files --smart-case \
+    ~/Notes \
+    ~/Code \
+    ~/Desktop \
+    ~/Documents \
+    ~/Downloads"
+  local out=$(eval $cmd | fzf)
+
+  if [ -f "$out" ]; then
+    $EDITOR "$out" < /dev/tty
+  elif [ -d "$out" ]; then
+    cd "$out"
+  fi
+}
+
