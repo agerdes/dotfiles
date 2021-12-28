@@ -23,6 +23,14 @@ else
   mumble "Homebrew already exists"
 fi
 
+# Find or clone dotfiles
+if [[ -a $DOTFILES_DIR ]]; then
+  mumble "Dotfiles exist, using $DOTFILES_DIR/zsh/zshrc"
+else
+  mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
+  git clone ssh://git@github.com/agerdes/dotfiles.git $DOTFILES_DIR
+fi
+source $DOTFILES_DIR/zsh/zshrc
 
 # Install Homebrew bundle
 if brew bundle check --file=/Users/agerdes/dotfiles/brew/Brewfile >/dev/null; then
@@ -33,17 +41,6 @@ else
   brew doctor
   brew bundle --file=$DOTFILES_DIR/brew/Brewfile
 fi
-
-
-# Find or clone dotfiles
-if [[ -a $DOTFILES_DIR ]]; then
-  mumble "Dotfiles exist, using $DOTFILES_DIR/zsh/zshrc"
-else
-  # TODO: Update to current, test that this works
-  mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
-  git clone ssh://git@github.com/agerdes/dotfiles.git $DOTFILES_DIR
-fi
-source $DOTFILES_DIR/zsh/zshrc
 
 
 # Run each ./*/setup
