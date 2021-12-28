@@ -3,7 +3,7 @@
 ## Bootstrap
 
 ```
-source <(curl -s https://raw.githubusercontent.com/agerdes/dotfiles/master/install)
+source <(curl -s https://raw.githubusercontent.com/agerdes/dotfiles/main/install)
 ```
 
 ## Thanks for the inspiration
