@@ -21,7 +21,7 @@ brew "ripgrep"
 brew "rsync"
 brew "svn"
 brew "tree"
-brew "vim", args: ["override-system-vi"] 
+brew "vim", args: ["override-system-vim"] 
 brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
