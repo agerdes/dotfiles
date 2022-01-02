@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+mkdir -p $HOME/Library/Applicatin\ Suppert/Code/User
 ln -sfv $DOTFILES_DIR/code/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 ln -sfv $DOTFILES_DIR/code/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
 ln -sfv $DOTFILES_DIR/code/snippets/ $HOME/Library/Application\ Support/Code/User
