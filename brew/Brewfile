@@ -13,7 +13,6 @@ cask "vlc"
 tap "simplydanny/pass-extensions"
 
 brew "bat"
-brew "chruby"
 brew "ddgr"
 brew "fzf"
 brew "git"
