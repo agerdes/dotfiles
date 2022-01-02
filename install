@@ -27,7 +27,6 @@ else
   mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
   git clone https://github.com/agerdes/dotfiles.git $DOTFILES_DIR
 fi
-source $DOTFILES_DIR/zsh/zshrc
 
 # Install Homebrew bundle
 if brew bundle check --file=/Users/agerdes/dotfiles/brew/Brewfile >/dev/null; then
@@ -38,6 +37,9 @@ else
   brew doctor
   brew bundle --file=$DOTFILES_DIR/brew/Brewfile
 fi
+
+# Source zshrc
+source $DOTFILES_DIR/zsh/zshrc
 
 # Run each ./*/setup
 setup_files=($DOTFILES_DIR/*/setup)
