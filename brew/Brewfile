@@ -22,7 +22,7 @@ brew "tree"
 brew "vim", args: ["override-system-vi"] 
 brew "zsh"
 brew "zsh-autosuggestions"
-brew "brew install zsh-syntax-highlighting"
+brew "zsh-syntax-highlighting"
 brew "pure"
 
 # Install from fonts from casks
