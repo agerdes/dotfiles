@@ -21,10 +21,6 @@ autoload -Uz apps
 autoload -Uz backup
 autoload -Uz launcher
 
-# chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
 # Use ripgrep for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs --smart-case --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
