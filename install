@@ -21,7 +21,8 @@ fi
 
 # Find or clone dotfiles
 if [[ -a $DOTFILES_DIR ]]; then
-  mumble "Dotfiles exist, using $DOTFILES_DIR/zsh/zshrc"
+  mumble "Dotfiles exist, updating"
+  ( cd $DOTFILES_DIR && git pull origin main )
 else
   mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
   git clone https://github.com/agerdes/dotfiles.git $DOTFILES_DIR
