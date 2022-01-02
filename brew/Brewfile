@@ -1,14 +1,9 @@
 # Install cask apps
 cask "brave-browser"
 cask "github"
-cask "calibre"
 cask "flux"
 cask "iterm2"
-cask "spotify"
-cask "steam"
-cask "transmission"
 cask "visual-studio-code"
-cask "vlc"
 
 tap "simplydanny/pass-extensions"
 
@@ -23,15 +18,15 @@ brew "pass-update"
 brew "pinentry-mac"
 brew "ripgrep"
 brew "rsync"
-brew "ruby-install"
-brew "terminal-notifier"
 brew "tree"
 brew "vim", args: ["override-system-vi"] 
-brew "youtube-dl"
 brew "zsh"
 brew "zsh-autosuggestions"
+brew "brew install zsh-syntax-highlighting"
+brew "pure"
 
 # Install from fonts from casks
+tap "homebrew/cask-fonts"
 cask "font-fira-code"
 cask "font-fira-mono"
 cask "font-fira-sans"
