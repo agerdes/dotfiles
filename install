@@ -29,7 +29,7 @@ else
 fi
 
 # Install Homebrew bundle
-if brew bundle check --file=/Users/agerdes/dotfiles/brew/Brewfile >/dev/null; then
+if brew bundle check --file=$DOTFILES_DIR/brew/Brewfile >/dev/null; then
   mumble "Homebrew bundle is up to date."
 else
   mumble "Homebrew bundle is out of date, updating.."
