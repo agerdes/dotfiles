@@ -57,7 +57,6 @@ alias zshconfig="vim ~/.zshrc"
 alias zzz="pmset sleepnow"
 
 # Use pure theme
-fpath=("$HOME/dotfiles/zsh/functions" $fpath)
 autoload -U promptinit; promptinit
 prompt pure
 
