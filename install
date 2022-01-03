@@ -22,10 +22,10 @@ fi
 # Find or clone dotfiles
 if [[ -a $DOTFILES_DIR ]]; then
   mumble "Dotfiles exist, updating"
-  ( cd $DOTFILES_DIR && git pull origin main )
+  ( cd $DOTFILES_DIR && git pull origin main && git submodule update --init )
 else
   mumble "Dotfiles don't exist, cloning to $DOTFILES_DIR"
-  git clone https://github.com/agerdes/dotfiles.git $DOTFILES_DIR
+  git clone --recurse-submodules https://github.com/agerdes/dotfiles.git $DOTFILES_DIR
 fi
 
 # Install Homebrew bundle
