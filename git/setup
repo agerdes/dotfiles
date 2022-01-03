@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+ln -sfv $DOTFILES_DIR/git/gitignore $HOME/.gitignore
+ln -sfv $DOTFILES_DIR/git/gitconfig $HOME/.gitconfig
+
