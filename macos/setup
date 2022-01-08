@@ -42,8 +42,22 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
+###############################################################################
+# Keyboard                                                                    #
+###############################################################################
+
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Fast key repeat and short initial delay
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
+
+# Set caps-lock to be ctrl
+mkdir -p ~/Library/LaunchAgents
+ln -sfv $DOTFILES_DIR/macos/com.example.KeyRemapping.plist \
+  ~/Library/LaunchAgents/com.example.KeyRemapping.plist
+launchctl load -w ~/Library/LaunchAgents/com.example.KeyRemapping.plist
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
