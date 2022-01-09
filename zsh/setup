@@ -2,4 +2,4 @@
 
 ln -sfv $DOTFILES_DIR/zsh/zshrc $HOME/.zshrc
 # Install fzf key bindings
-$(brew --prefix)/opt/fzf/install
+"$(brew --prefix)/opt/fzf/install" --all
