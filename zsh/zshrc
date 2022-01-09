@@ -4,12 +4,14 @@ export GPG_TTY=$(tty)
 # LS colors, made with https://geoff.greer.fm/lscolors/
 export LSCOLORS="Exfxcxdxbxegedabagacad"
 # Pick-up command history where OMZ left off
-HISTFILE="$HOME/.zsh_history"
+HISTFILE=~/.zsh_history
 HISTSIZE=32768
 SAVEHIST=10000
-export HISTCONTROL=ignoredups
-# Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pass:pwd:exit:date:* --help"
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+HISTORY_IGNORE="(ls|ls *|cd *|pass|pwd|exit|date|* --help|git status)"
+# History ignores fails  - http://www.zsh.org/mla/users//2014/msg00715.html
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 fpath=( $HOME/dotfiles/zsh/bin "${fpath[@]}" )
 
@@ -59,11 +61,11 @@ prompt pure
 # git completion
 autoload -Uz compinit && compinit
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # fish-like auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fish-like command syntax highlighting - needs to be the last source in the file
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
