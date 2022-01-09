@@ -169,5 +169,6 @@
   "workbench.sideBar.location": "left",
   "git.autofetch": true,
   "liveshare.authenticationProvider": "GitHub",
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.inlineSuggest.enabled": true
 }
