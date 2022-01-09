@@ -1,7 +1,6 @@
 # Install cask apps
 cask "brave-browser"
 cask "github"
-cask "flux"
 cask "iterm2"
 cask "visual-studio-code"
 

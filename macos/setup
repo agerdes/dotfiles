@@ -7,15 +7,6 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
-# Save screenshots in ~/Downloads
-defaults write com.apple.screencapture location -string "${HOME}/Downloads"
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
-
-# Disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
-
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
@@ -43,6 +34,31 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+
+# NightShift enabled sunset to sunrise
+plistLoc="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
+currentUserUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID)
+currentUserUID=$(echo $currentUserUID | cut -d' ' -f2)
+currentUserUID="CBUser-"$currentUserUID
+sudo plutil -replace "$currentUserUID".CBBlueLightReductionCCTTargetRaw \
+  -integer 2700 $plistLoc
+sudo plutil -replace "$currentUserUID".CBBlueReductionStatus.BlueReductionMode \
+  -bool true $plistLoc
+
+# Save screenshots in ~/Downloads
+defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+
+# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+defaults write com.apple.screencapture type -string "png"
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
 
 
 ###############################################################################
