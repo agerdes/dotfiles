@@ -1,9 +1,6 @@
 [core]
-
-	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore
   editor = code -w
-
   # Make `git rebase` safer on macOS.
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
@@ -12,9 +9,36 @@
 	precomposeunicode = false
 
 [init]
-
 	defaultBranch = main
 
 [user]
     name = Aaron Gerdes
     email = aarongerdes@gmail.com
+
+[diff]
+  tool = vscode
+	colorMoved = zebra
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+  tool = vscode
+
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+
+[commit]
+	verbose = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
