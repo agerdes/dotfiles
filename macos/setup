@@ -42,14 +42,14 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
 # NightShift enabled sunset to sunrise
-plistLoc="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
+NIGHTSHIFT_PLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
 currentUserUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID)
 currentUserUID=$(echo $currentUserUID | cut -d' ' -f2)
 currentUserUID="CBUser-"$currentUserUID
 sudo plutil -replace "$currentUserUID".CBBlueLightReductionCCTTargetRaw \
-  -integer 2700 $plistLoc
+  -integer 2700 $NIGHTSHIFT_PLIST
 sudo plutil -replace "$currentUserUID".CBBlueReductionStatus.BlueReductionMode \
-  -bool true $plistLoc
+  -bool true $NIGHSHIFT_PLIST
 
 # Save screenshots in ~/Downloads
 defaults write com.apple.screencapture location -string "${HOME}/Downloads"
@@ -59,7 +59,6 @@ defaults write com.apple.screencapture type -string "png"
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
-
 
 ###############################################################################
 # Keyboard, Mouse, Trackpad                                                   #
@@ -80,7 +79,6 @@ mkdir -p ~/Library/LaunchAgents
 ln -sfv $DOTFILES_DIR/macos/com.example.KeyRemapping.plist \
   ~/Library/LaunchAgents/com.example.KeyRemapping.plist
 launchctl load -w ~/Library/LaunchAgents/com.example.KeyRemapping.plist
-
 
 ###############################################################################
 # Finder                                                                      #
@@ -113,20 +111,22 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+ICON_PLIST=~/Library/Preferences/com.apple.finder.plist
+
 # Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+plutil -replace DesktopViewSettings.IconViewSettings.arrangeBy -string 'grid' $ICON_PLIST
+plutil -replace FK_StandardViewSettings.IconViewSettings.arrangeBy -string 'grid' $ICON_PLIST
+plutil -replace StandardViewSettings.IconViewSettings.arrangeBy -string 'grid' $ICON_PLIST
 
 # Increase grid spacing for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+plutil -replace DesktopViewSettings.IconViewSettings.gridSpacing -integer 100 $ICON_PLIST
+plutil -replace FK_StandardViewSettings.IconViewSettings.gridSpacing -integer 100 $ICON_PLIST
+plutil -replace StandardViewSettings.IconViewSettings.gridSpacing -integer 100 $ICON_PLIST
 
 # Increase the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+plutil -replace DesktopViewSettings.IconViewSettings.iconSize -integer 100 $ICON_PLIST
+plutil -replace FK_StandardViewSettings.IconViewSettings.iconSize -integer 100 $ICON_PLIST
+plutil -replace StandardViewSettings.IconViewSettings.iconSize -integer 100 $ICON_PLIST
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -153,7 +153,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
-
 ###############################################################################
 # Mail, TextEdit, TimeMachine, Photos                                         #
 ###############################################################################
@@ -176,7 +175,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
 
 for app in "Dock" "Mail" "SystemUIServer" "Finder" "TextEdit"; do
 	killall "${app}" > /dev/null 2>&1
