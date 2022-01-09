@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 export EDITOR='vim'
 export GPG_TTY=$(tty)
 # LS colors, made with https://geoff.greer.fm/lscolors/
@@ -64,8 +64,8 @@ autoload -Uz compinit && compinit
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fish-like auto suggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fish-like command syntax highlighting - needs to be the last source in the file
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
