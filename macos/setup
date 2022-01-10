@@ -90,7 +90,12 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 25
 mkdir -p ~/Library/LaunchAgents
 ln -sfv $DOTFILES_DIR/macos/com.example.KeyRemapping.plist \
   ~/Library/LaunchAgents/com.example.KeyRemapping.plist
-launchctl load -w ~/Library/LaunchAgents/com.example.KeyRemapping.plist
+if launchctl list | grep com.example.KeyRemapping > /dev/null 2>&1; then
+  echo "KeyRemapping is already running."
+else
+  echo "Initializing KeyRemapping..."
+  launchctl load -w ~/Library/LaunchAgents/com.example.KeyRemapping.plist
+fi
 
 ###############################################################################
 # Finder                                                                      #
