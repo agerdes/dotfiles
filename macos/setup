@@ -41,15 +41,26 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
-# NightShift enabled sunset to sunrise
-NIGHTSHIFT_PLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
-currentUserUID=$(dscl . -read /Users/$(whoami)/ GeneratedUID)
-currentUserUID=$(echo $currentUserUID | cut -d' ' -f2)
-currentUserUID="CBUser-"$currentUserUID
-sudo plutil -replace "$currentUserUID".CBBlueLightReductionCCTTargetRaw \
-  -integer 2700 $NIGHTSHIFT_PLIST
-sudo plutil -replace "$currentUserUID".CBBlueReductionStatus.BlueReductionMode \
-  -bool true $NIGHSHIFT_PLIST
+# NightShift enabled sunset to sunrise, warmest color temp
+BRIGHT_PLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.plist"
+CURRENT_USER_UID="CBUser-$(echo \
+  $(dscl . -read /Users/$(whoami)/ GeneratedUID) | cut -d' ' -f2 \
+)"
+COLOR_TEMP=2700 
+function set_color_temp {
+  readonly method=$1
+  sudo plutil -$1 "$CURRENT_USER_UID".CBBlueLightReductionCCTTargetRaw \
+    -integer $COLOR_TEMP $BRIGHT_PLIST 
+}
+
+if sudo set_color_temp insert > /dev/null 2>&1; then
+else
+  echo "Color temp already set for NightShift"
+  set_color_temp replace
+fi
+
+sudo plutil -replace "$CURRENT_USER_UID".CBBlueReductionStatus.BlueReductionMode \
+  -bool true $BRIGHT_PLIST
 
 # Save screenshots in ~/Downloads
 defaults write com.apple.screencapture location -string "${HOME}/Downloads"
