@@ -45,7 +45,6 @@ bindkey '^A' apps
 ls -G . &>/dev/null && alias ls='ls -G'
 alias ap="cat >> $1"
 alias bc="bc -lq"
-alias fort="ssh aaron@45.55.251.140 -p30001"
 alias goo="ddgr -n 3 $1"
 alias gratitude="vim ~/Notes/Gratitude/$(date '+%Y-%m-%d').txt"
 alias in="cat >> ~/Notes/Inbox.txt"
