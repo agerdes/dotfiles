@@ -1,57 +1,54 @@
 {
-  /************
-
-  Layout
-
-  ************/
-
-  "window.zoomLevel": 0,
-  "editor.fontSize": 13,
+  "editor.cursorStyle": "underline-thin",
+  "editor.cursorBlinking": "phase",
+  "editor.fontSize": 18,
   "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": true,
-
-  // Rulers
-  "editor.renderLineHighlight": "all",
-  "editor.rulers": [80],
-
-  // Hide tabs, minimap, overview, rulers, and activity bar
-  "workbench.statusBar.visible": false,
-  "workbench.editor.showTabs": false,
+  "editor.guides.indentation": false,
+  "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "editor.overviewRulerBorder": false,
-  "editor.overviewRulerLanes": 1,
-  "editor.renderIndentGuides": false,
-  "workbench.activityBar.visible": false,
-
-  "explorer.confirmDragAndDrop": false,
+  "editor.renderLineHighlight": "all",
+  "editor.rulers": [80],
   "editor.scrollBeyondLastLine": false,
-  "workbench.startupEditor": "none",
+  "editor.tabSize": 2,
+  // rainbow brackets
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": false,
+
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // Prevent macOS from creating a new space when fullscreen
+  "window.nativeFullScreen": false,
+
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#aaaaaa22",
     "editorRuler.foreground": "#aaaaaa22"
   },
+  "workbench.editor.showTabs": false,
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "none",
+
 
   /************
 
   Tabs & Whitespace
 
   ************/
-
-  "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "rewrap.autoWrap.enabled": true,
+
+
 
   /************
 
   Cursor
 
   ************/
-
-  "editor.cursorStyle": "underline-thin",
-  "editor.cursorBlinking": "phase",
   "terminal.integrated.cursorBlinking": true,
   "vim.cursorStylePerMode.insert": "line",
   "vim.cursorStylePerMode.normal": "underline",
@@ -60,115 +57,156 @@
   "vim.cursorStylePerMode.visualblock": "line",
   "vim.cursorStylePerMode.visualline": "line",
 
-  /************
-
-  Diff
-
-  ************/
-
-  "diffEditor.renderSideBySide": false,
 
   /************
 
   Vim
 
   ************/
-
   "vim.timeout": 250,
   "vim.useSystemClipboard": true,
   "vim.hlsearch": false,
-  "vim.insertModeKeyBindings": [{ "before": ["<C-l>"], "after": ["<Esc>"] }],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["leader", "w"],
-      "commands": ["workbench.action.navigateEditorGroups"]
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.navigateEditorGroups"
+      ]
     },
-    { "before": [">"], "commands": ["editor.action.indentLines"] },
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] }
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
   ],
+
 
   /************
 
   Integrated Terminal Settings
 
   ************/
-
-  "terminal.integrated.shell.osx": "/opt/homebrew/bin/zsh",
-  "terminal.integrated.confirmOnExit": true,
   "terminal.integrated.scrollback": 5000,
   "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.fontSize": 18,
+
 
   /************
 
-  Linting & Formatting
+  Languages
 
   ************/
 
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
+  // Git plugin settings
+  "git.autofetch": true,
+
+  // Go plugin settings
+  "go.toolsManagement.autoUpdate": true,
+
+  // Ruby plugin settings
   "ruby.useLanguageServer": true,
   "ruby.lint": {
     "rubocop": {
-      "command": "rubocop",
-      "useBundler": false,
-      "lint": true,
-      "rails": true
+      "rails": true,
+      "forceExclusion": true
     }
   },
-  "eslint.enable": true,
-  "eslint.lintTask.enable": true,
-  "eslint.packageManager": "yarn",
-  "eslint.validate": ["typescript", "typescriptreact"],
-  "tslint.enable": false,
+  "ruby.format": "rubocop",
 
-  /************
-
-  File-type Specific Settings
-
-  ************/
-
-  "[git-commit]": {
-    "editor.rulers": [72, 50],
-    "editor.wordWrap": "off"
-  },
+  // TypeScript plugin settings
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "[git-commit][git-rebase]": {
+    "editor.rulers": [72, 50],
+    "editor.wordWrap": "off",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestions": {
+      "other": "off",
+      "comments": "off",
+      "strings": "off"
+    },
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+  },
+  "[markdown]" : {
+    "editor.wordWrap": "on",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestions": {
+      "other": "off",
+      "comments": "off",
+      "strings": "off"
+    },
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "rebornix.ruby",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact][json][jsx-tags][yaml][editorconfig][dotenv][html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+  },
+
 
   /************
 
   Search
 
   ************/
-
   "search.exclude": {
     "dist/": true
   },
+
+
 
   /************
 
   Liveshare
 
   ************/
-
   "liveshare.featureSet": "insiders",
   "liveshare.nameTagVisibility": "Always",
   "liveshare.showReadOnlyUsersInEditor": "always",
   "liveshare.anonymousGuestApproval": "reject",
   "liveshare.increasedGuestLimit": false,
   "liveshare.guestApprovalRequired": true,
-  "rubyTestExplorer.rspecCommand": "docker-compose exec -e RAILS_ENV=test -e RAKE_END=test app bundle exec rspec",
-  "rubyTestExplorer.testFramework": "rspec",
-  "rubyTestExplorer.logpanel": true,
-  "ruby.specClearTerminal": false,
-  "ruby.specCommand": "bin/machina test",
-  "ruby.specFocusTerminal": false,
-  "ruby.specSaveFile": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "explorer.confirmDelete": false,
-  "workbench.sideBar.location": "left",
-  "git.autofetch": true,
-  "liveshare.authenticationProvider": "GitHub",
-  "security.workspace.trust.untrustedFiles": "open",
-  "editor.inlineSuggest.enabled": true
+  "terminal.integrated.tabs.enabled": false,
+  "diffEditor.renderSideBySide": false,
+  "githubPullRequests.terminalLinksHandler": "github",
+  "window.zoomLevel": 1,
+
 }
