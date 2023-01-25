@@ -62,6 +62,10 @@ autoload -Uz compinit && compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# chruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+
 # fish-like auto suggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
