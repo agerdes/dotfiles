@@ -14,6 +14,7 @@
 [user]
     name = Aaron Gerdes
     email = aarongerdes@gmail.com
+	signingkey = 1BEF0509330C0E950BCA968C6DDEE1F0A1A350F9
 
 [diff]
   tool = vscode
@@ -30,6 +31,7 @@
 
 [commit]
 	verbose = true
+	gpgsign = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
