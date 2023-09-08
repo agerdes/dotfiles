@@ -46,11 +46,11 @@ BRIGHT_PLIST="/private/var/root/Library/Preferences/com.apple.CoreBrightness.pli
 CURRENT_USER_UID="CBUser-$(echo \
   $(dscl . -read /Users/$(whoami)/ GeneratedUID) | cut -d' ' -f2 \
 )"
-COLOR_TEMP=2700 
+COLOR_TEMP=2700
 function set_color_temp {
   readonly method=$1
   sudo plutil -$1 "$CURRENT_USER_UID".CBBlueLightReductionCCTTargetRaw \
-    -integer $COLOR_TEMP $BRIGHT_PLIST 
+    -integer $COLOR_TEMP $BRIGHT_PLIST
 }
 
 if sudo set_color_temp insert > /dev/null 2>&1; then
@@ -147,7 +147,7 @@ plutil -replace FK_StandardViewSettings.IconViewSettings.iconSize -integer 100 $
 plutil -replace StandardViewSettings.IconViewSettings.iconSize -integer 100 $ICON_PLIST
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
