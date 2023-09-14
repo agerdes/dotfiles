@@ -12,8 +12,8 @@
 	defaultBranch = main
 
 [user]
-    name = Aaron Gerdes
-	email = 36612+agerdes@users.noreply.github.com
+  name = Aaron Gerdes
+  email = a@aarongerdes.com
 	signingkey = 1BEF0509330C0E950BCA968C6DDEE1F0A1A350F9
 
 [diff]
